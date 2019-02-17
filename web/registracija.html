@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script> 
+    </head>
+
+
+
+    <body>
+        <div id="content">
+            <table>
+                <h1>Registracija</h1>
+                <tr>
+                    <td>Ime:</td><td><input type="text" v-model="korisnik.ime" /></td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td><td><input type="text" v-model="korisnik.prezime" /></td>
+                </tr>
+                <tr>
+                    <td>Email:</td><td><input type="text" v-model="korisnik.email" /></td>     
+                </tr>
+                <tr>
+                    <td>Sifra:</td><td><input type="text" v-model="korisnik.pass" /></td>
+                </tr>
+                
+                
+                <tr>
+                    <td></td><td><button v-on:click="dodaj">Registuj se</button></td>
+                </tr>
+
+
+            </table>
+        </div>
+    </body>
+
+    <script>
+var app = new Vue({
+    el: "#content",
+    data: {
+        korisnik: {
+
+        }
+    },
+
+    methods: {
+        dodaj() {
+            axios.post("app/korisnik", app.korisnik).then(function (result) {
+                alert("Uspsesno ste se registvorali");
+                window.location = "login.html";
+            });
+        }
+
+    }
+
+
+});
+
+
+    </script>
+</html>
